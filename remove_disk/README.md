@@ -25,7 +25,7 @@ All the following operations can be run in parallel, except the last step, runni
         /usr/local/cassandra/bin/nodetool stop compaction
         /usr/local/cassandra/bin/nodetool compactionstats
 
-5. Drop the script on the node, make it executable and configure variables (https://github.com/arodrime/cassandra-tools/blob/master/remove_disk/remove_extra_disk.sh#L2-L4)
+5. Drop the script on the node, make it executable and configure variables (https://github.com/SpanningCloudApps/cassandra-tools/blob/master/remove_disk/remove_extra_disk.sh#L3-L8)
 
         curl -Os https://github.com/SpanningCloudApps/cassandra-tools/blob/master/remove_disk/remove_extra_disk.sh
         chmod u+x remove_extra_disk.sh
