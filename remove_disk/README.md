@@ -38,7 +38,7 @@ All the following operations can be run in parallel, except the last step, runni
 
 7. 3rd rsync (if needed, see the diff)
 
-        sudo du -sh $path_old_disk_data_dir path_new_disk_temp_dir
+        sudo du -sh $path_old_disk_data_dir $path_new_disk_temp_dir
         sudo rsync -azvP --delete-before rsync -azvP --delete-before $path_old_disk_data_dir $path_new_disk_temp_dir
 
 8. Check conf
