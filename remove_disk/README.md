@@ -7,12 +7,12 @@ All the following operations can be run in parallel, except the last step, runni
 
 1. Make sure node is eligible for the removal (enough disk space left on the remaining disk)
 
-        grep "data_fi" /etc/cassandra/conf/cassandra.yaml -A3
+        grep "data_fi" /usr/local/cassandra/conf/cassandra.yaml -A3
         df -h | grep cassandra
 
 2. Change config and remove the disk you want to go away.
 
-        sudo vim /etc/cassandra/conf/cassandra.yaml
+        sudo vi /usr/local/cassandra/conf/cassandra.yaml
 
 3. 1st rsync - The idea is to have the node down for the shortest time possible, even if this makes the operation slower.
 
@@ -29,7 +29,7 @@ All the following operations can be run in parallel, except the last step, runni
 
         curl -Os https://raw.githubusercontent.com/SpanningCloudApps/cassandra-tools/master/remove_disk/remove_extra_disk.sh
         chmod u+x remove_extra_disk.sh
-        vim remove_extra_disk.sh # Set 'User defined variables'
+        vi remove_extra_disk.sh # Set 'User defined variables'
 
 6. 2nd rsync
 
@@ -43,7 +43,7 @@ All the following operations can be run in parallel, except the last step, runni
 
 8. Check conf
 
-        grep "data_fi" /etc/cassandra/conf/cassandra.yaml -A3
+        grep "data_fi" /usr/local/cassandra/conf/cassandra.yaml -A3
 
 ## Run the script `remove_extra_disk.sh`
 
