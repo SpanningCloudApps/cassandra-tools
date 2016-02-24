@@ -1,7 +1,7 @@
 #!/bin/bash
 # User defined variables
 path_old_disk=/var/data/cassandra_data2/
-path_old_disk_data_dir=$path_old_disk/
+path_old_disk_data_dir=$path_old_disk # this is the same path for us, since we mount the data directory directly
 path_new_disk_temp_dir=/var/data/cassandra/data2/
 
 sed_match_source="data2"
