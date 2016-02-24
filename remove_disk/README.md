@@ -17,29 +17,29 @@ All the following operations can be run in parallel, except the last step, runni
 3. 1st rsync - The idea is to have the node down for the shortest time possible, even if this makes the operation slower.
 
         screen -S rsync
-        sudo rsync -azvP --delete-before <path_old_disk>/data/ <path_new_disk>/data-tmp/
+        sudo rsync -azvP --delete-before $path_old_disk_data_dir $path_new_disk_temp_dir
 
 4. When first sync finishes, disable compaction and stop compaction to avoid files to be compacted and transferring again the same files. I do not recommend this before the first rsync as we don't want the cluster to stop compacting for too long. If your dataset is small, it should be fine doing this before first rsync and only do 2 rsync.
 
-        nodetool disableautocompaction
-        nodetool stop compaction
-        nodetool compactionstats
+        /usr/local/cassandra/bin/nodetool disableautocompaction
+        /usr/local/cassandra/bin/nodetool stop compaction
+        /usr/local/cassandra/bin/nodetool compactionstats
 
 5. Drop the script on the node, make it executable and configure variables (https://github.com/arodrime/cassandra-tools/blob/master/remove_disk/remove_extra_disk.sh#L2-L4)
 
-        curl -Os https://github.com/arodrime/cassandra-tools/blob/master/remove_disk/remove_extra_disk.sh
+        curl -Os https://github.com/SpanningCloudApps/cassandra-tools/blob/master/remove_disk/remove_extra_disk.sh
         chmod u+x remove_extra_disk.sh
         vim remove_extra_disk.sh # Set 'User defined variables'
 
 6. 2nd rsync
 
         screen -r rsync
-        sudo rsync -azvP --delete-before <path_old_disk>/data/ <path_new_disk>/data-tmp/
+        sudo rsync -azvP --delete-before $path_old_disk_data_dir $path_new_disk_temp_dir
 
 7. 3rd rsync (if needed, see the diff)
 
-        sudo du -sh <path_old_disk> && sudo du -sh <path_new_disk>/data-tmp
-        sudo rsync -azvP --delete-before <path_old_disk>/data/ <path_new_disk>/data-tmp/
+        sudo du -sh $path_old_disk_data_dir path_new_disk_temp_dir
+        sudo rsync -azvP --delete-before rsync -azvP --delete-before $path_old_disk_data_dir $path_new_disk_temp_dir
 
 8. Check conf
 
