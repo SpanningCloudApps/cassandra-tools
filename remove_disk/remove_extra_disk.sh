@@ -4,8 +4,8 @@ path_old_disk=/var/data/cassandra_data2/
 path_old_disk_data_dir=$path_old_disk/
 path_new_disk_temp_dir=/var/data/cassandra/data2/
 
-sed_match_source="data2\/"
-sed_replace_destination=""
+sed_match_source="data2"
+sed_replace_destination="data"
 
 # Once we have are ready, see README, we need to stop cassandra
 success=0
