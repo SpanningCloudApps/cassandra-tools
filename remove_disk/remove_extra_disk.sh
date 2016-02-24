@@ -14,6 +14,8 @@ service cassandra stop && sleep 10 && success=1
 # Sync again to get the diff
 if ((success)); then
   success=0
+  # The --delete-before flag is for when any files have changed on the old disk since the last sync, so
+  # we first remove them in the temp directory, then sync again.
   rsync -azvP --delete-before $path_old_disk_data_dir $path_new_disk_temp_dir && success=1
 else
   exit 1
