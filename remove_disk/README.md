@@ -27,7 +27,7 @@ All the following operations can be run in parallel, except the last step, runni
 
 5. Drop the script on the node, make it executable and configure variables (https://github.com/SpanningCloudApps/cassandra-tools/blob/master/remove_disk/remove_extra_disk.sh#L3-L8)
 
-        curl -Os https://github.com/SpanningCloudApps/cassandra-tools/blob/master/remove_disk/remove_extra_disk.sh
+        curl -Os https://raw.githubusercontent.com/SpanningCloudApps/cassandra-tools/master/remove_disk/remove_extra_disk.sh
         chmod u+x remove_extra_disk.sh
         vim remove_extra_disk.sh # Set 'User defined variables'
 
